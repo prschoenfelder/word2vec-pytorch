@@ -34,7 +34,7 @@ class Word2VecTrainer:
         for iteration in range(self.iterations):
 
             print("\n\n\nIteration: " + str(iteration + 1))
-            optimizer = optim.SparseAdam(self.skip_gram_model.parameters(), lr=self.initial_lr)
+            optimizer = optim.SparseAdam(list(self.skip_gram_model.parameters()), lr=self.initial_lr)
             scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, len(self.dataloader))
 
             running_loss = 0.0
